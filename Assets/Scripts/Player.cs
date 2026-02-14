@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
@@ -14,6 +15,13 @@ public class Player : MonoBehaviour
     private Transform cameraPivot;
     [SerializeField] 
     private Animator _gunAnimator;
+    [SerializeField]
+    private AudioSource _gunFireSound;
+    [SerializeField]
+    private float _fireRate = 0.5f;
+
+
+    private float _nextFireTime = 0f;
 
     Vector2 input;
     Vector2 lookInput;
@@ -67,9 +75,10 @@ public class Player : MonoBehaviour
 
         transform.position += moveDirection * _playerSpeed * Time.deltaTime;
 
-        if (fireAction.action.triggered) 
+        if (fireAction.action.triggered && Time.time >= _nextFireTime)
         {
             Shoot();
+            _nextFireTime = Time.time + _fireRate;
         }
     }
 
@@ -77,6 +86,8 @@ public class Player : MonoBehaviour
     {
         Debug.Log("Bang!");
         _gunAnimator.SetTrigger("Fire");
+        _gunFireSound.Play();
+
     }
 
 
