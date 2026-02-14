@@ -23,6 +23,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Fire",
+                    "type": "Button",
+                    "id": "4890a3ba-5b5d-4d7f-bba5-30c0d9d38e6a",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -83,8 +92,8 @@
                 },
                 {
                     "name": "",
-                    "id": "72eb3929-a908-4bec-9d4c-b1290484f090",
-                    "path": "",
+                    "id": "a7226af5-d623-4529-b9f6-78a41af48a7e",
+                    "path": "<Mouse>/delta",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -94,12 +103,12 @@
                 },
                 {
                     "name": "",
-                    "id": "a7226af5-d623-4529-b9f6-78a41af48a7e",
-                    "path": "<Mouse>/delta",
+                    "id": "37f6e345-eb38-4643-a7f2-2a60c6f923db",
+                    "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "LookAround",
+                    "action": "Fire",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

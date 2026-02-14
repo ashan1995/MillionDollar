@@ -12,6 +12,8 @@ public class Player : MonoBehaviour
     float mouseSensitivity = 100f;
     [SerializeField] 
     private Transform cameraPivot;
+    [SerializeField] 
+    private Animator _gunAnimator;
 
     Vector2 input;
     Vector2 lookInput;
@@ -20,6 +22,22 @@ public class Player : MonoBehaviour
 
     public InputActionReference move;
     public InputActionReference lookAction;
+    public InputActionReference fireAction;
+
+    void OnEnable()
+    {
+        move.action.Enable();
+        lookAction.action.Enable();
+        fireAction.action.Enable();
+
+    }
+
+    void OnDisable()
+    {
+        move.action.Disable();
+        lookAction.action.Disable();
+        fireAction.action.Disable();
+    }
 
     private void Start()
     {
@@ -48,6 +66,17 @@ public class Player : MonoBehaviour
 
 
         transform.position += moveDirection * _playerSpeed * Time.deltaTime;
+
+        if (fireAction.action.triggered) 
+        {
+            Shoot();
+        }
+    }
+
+    private void Shoot()
+    {
+        Debug.Log("Bang!");
+        _gunAnimator.SetTrigger("Fire");
     }
 
 
